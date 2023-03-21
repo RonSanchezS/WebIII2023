@@ -13,4 +13,7 @@ export class PostsService {
   getPosts(){
     return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
   }
+  getSinglePost(id : number){
+    return this.http.get<Post>('https://jsonplaceholder.typicode.com/posts/'+id);
+  }
 }
