@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'listsaposts',
     loadChildren: () => import('./pages/listsaposts/listsaposts.module').then( m => m.ListsapostsPageModule)
   },
+  {
+    path: 'singlepost/:id',
+    loadChildren: () => import('./pages/singlepost/singlepost.module').then( m => m.SinglepostPageModule)
+  }
   
 ];
 
