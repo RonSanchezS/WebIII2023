@@ -6,11 +6,7 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
+  
   {
     path: 'about',
     loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
@@ -22,8 +18,16 @@ const routes: Routes = [
   {
     path: 'singlepost/:id',
     loadChildren: () => import('./pages/singlepost/singlepost.module').then( m => m.SinglepostPageModule)
-  }
-  
+  },
+  {
+    path: 'formpage',
+    loadChildren: () => import('./pages/formpage/formpage.module').then( m => m.FormpagePageModule)
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
