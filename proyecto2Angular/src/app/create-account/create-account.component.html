@@ -1,0 +1,38 @@
+<mat-card *ngIf="error">
+    <mat-card-content>
+        <p>{{error}}</p>
+    </mat-card-content>
+</mat-card>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Formulario de creacion de cuentas</mat-card-title>
+        <mat-card-subtitle>Aqui creas una cuenta, usada para acceder a las caracteristicas de la App</mat-card-subtitle>
+    </mat-card-header>
+    <mat-form-field appearance="fill">
+        <mat-label>Nombre de usuario</mat-label>
+        <input matInput [formControl]="username" placeholder="administrador123" name="inputUsername" required>
+        <mat-error *ngIf="username.invalid">{{getErrorMessage('username')}}</mat-error>
+
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="email" type="email"  placeholder="administrador123@test.com"
+            name="inputUsername" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage('email')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" placeholder="administrador123"
+            name="inputPassword" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="password.invalid">{{getErrorMessage('password')}}</mat-error>
+
+    </mat-form-field>
+    <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="createAccount()">Crear cuenta</button>
+    </mat-card-actions>
+</mat-card>

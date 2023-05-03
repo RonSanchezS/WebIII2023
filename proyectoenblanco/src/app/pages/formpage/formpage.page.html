@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <form>
+  <form #f=ngForm name="form" (ngSubmit)="f.form.valid && enviardatos()">
     <ion-label>Nombres</ion-label>
 
     <ion-input type="text" minlength="4" name="asd" required="required" placeholder="Nombre" [(ngModel)]="nombres"
@@ -21,8 +21,8 @@
 
     <ion-label>Apellidos</ion-label>
 
-    <ion-input type="text" minlength="4" name="hagsd" required="required" placeholder="Apellidos" [(ngModel)]="apellidos"
-      #apellidosInput="ngModel"></ion-input>
+    <ion-input type="text" minlength="4" name="hagsd" required="required" placeholder="Apellidos"
+      [(ngModel)]="apellidos" #apellidosInput="ngModel"></ion-input>
 
     <ion-item *ngIf="apellidosInput.invalid && (apellidosInput.dirty || apellidosInput.touched)">
       <ion-label *ngIf="apellidosInput.errors?.['required']">El nombre es requerido</ion-label>
@@ -31,7 +31,42 @@
         El nombre tiene que tener minimo 4 letras
       </ion-label>
     </ion-item>
+    <!---->
+    <ion-input type="text" name="edad" required="required" placeholder="Edad"
+      [(ngModel)]="edad" #edadInput="ngModel"></ion-input>
 
-    <ion-button (click)="enviardatos()" expand="block" fill="clear" shape="round">Click me</ion-button>
+    <ion-item *ngIf="edadInput.invalid && (edadInput.dirty || edadInput.touched)">
+      <ion-label *ngIf="edadInput.errors?.['required']">El nombre es requerido</ion-label>
+
+      <ion-label *ngIf="edadInput.errors?.['minlength']">
+        El nombre tiene que tener minimo 4 letras
+      </ion-label>
+    </ion-item>
+
+    <!---->
+    <ion-input type="text" minlength="4" name="ciudad" required="required" placeholder="Ciudad"
+      [(ngModel)]="ciudad" #ciudadInput="ngModel"></ion-input>
+
+    <ion-item *ngIf="ciudadInput.invalid && (ciudadInput.dirty || ciudadInput.touched)">
+      <ion-label *ngIf="ciudadInput.errors?.['required']">El nombre es requerido</ion-label>
+
+      <ion-label *ngIf="ciudadInput.errors?.['minlength']">
+        El nombre tiene que tener minimo 4 letras
+      </ion-label>
+    </ion-item>
+
+    <!---->
+    <ion-input type="date" name="fechaNacimiento" required="required" placeholder="Apellidos"
+      [(ngModel)]="fechaNacimiento" #fechaNacimientoInput="ngModel"></ion-input>
+
+    <ion-item *ngIf="fechaNacimientoInput.invalid && (fechaNacimientoInput.dirty || fechaNacimientoInput.touched)">
+      <ion-label *ngIf="fechaNacimientoInput.errors?.['required']">El nombre es requerido</ion-label>
+
+      <ion-label *ngIf="fechaNacimientoInput.errors?.['minlength']">
+        El nombre tiene que tener minimo 4 letras
+      </ion-label>
+    </ion-item>
+
+    <ion-button type="submit" expand="block" fill="clear" shape="round">Click me</ion-button>
   </form>
 </ion-content>

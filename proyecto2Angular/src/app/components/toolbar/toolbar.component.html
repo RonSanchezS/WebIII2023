@@ -1,0 +1,64 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Angular Material + Django</span>
+
+  <span></span>
+  <button matTooltip="Login" *ngIf="!tokenExists" mat-icon-button routerLink="/login">
+    <mat-icon>person</mat-icon>
+  </button>
+  <button matTooltip="Mis reuniones" mat-icon-button routerLink="/home">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button matTooltip="Reuniones" mat-icon-button routerLink="/reuniones">
+    <mat-icon>group_work</mat-icon>
+  </button>
+
+  <button matTooltip="Logout" *ngIf="tokenExists" mat-icon-button (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side">
+    <mat-nav-list>
+      <mat-list-item *ngIf="!tokenExists">
+        <button matTooltip="Login" mat-icon-button routerLink="/login" [matTooltipPosition]="'right'">
+          <mat-icon>person</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item matTooltip="Mis reuniones" [matTooltipPosition]="'right'">
+        <button mat-icon-button routerLink="/home">
+          <mat-icon>home</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button matTooltip="Reuniones" mat-icon-button routerLink="/reuniones" [matTooltipPosition]="'right'">
+          <mat-icon>group_work</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="tokenExists">
+        <button matTooltip="Logout" mat-icon-button (click)="logout()" [matTooltipPosition]="'right'">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button matTooltip="Crear cuenta" mat-icon-button routerLink="/createAccount" [matTooltipPosition]="'right'">
+          <mat-icon>person_add</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="tokenExists">
+        <button matTooltip="Agregar reunion" mat-icon-button routerLink="/createGroup" [matTooltipPosition]="'right'">
+          <mat-icon>group_add</mat-icon>
+        </button>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

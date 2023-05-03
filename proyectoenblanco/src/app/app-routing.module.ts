@@ -28,6 +28,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'listapersonas',
+    loadChildren: () => import('./pages/listapersonas/listapersonas.module').then( m => m.ListapersonasPageModule)
+  },
 ];
 
 @NgModule({
