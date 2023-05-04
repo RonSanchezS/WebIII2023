@@ -21,6 +21,9 @@ export class UsuariosService {
       httpOptions
     );
   }
+  getMyUsername() {
+    adadsasdasd termine aqui anoche, necesito obtener el ID del usuario logeado y mandarlo de nuevo a la api para obtener el username
+  }
   createUsuario(username: string, password: string, email: string) {
     return this.http.post('http://127.0.0.1:8000/usuarios/', {
       username,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,7 +11,11 @@ export class ToolbarComponent {
 
   tokenExists = localStorage.getItem('token') ? true : false;
 
-  constructor(private router : Router) { }
+  constructor(private router : Router, private api : UsuariosService) { }
+
+  getMyUsername(){
+    return this.api.getMyUsername();
+  }
 
   logout(){
     localStorage.removeItem('token');

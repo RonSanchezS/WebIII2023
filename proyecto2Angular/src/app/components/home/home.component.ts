@@ -19,11 +19,22 @@ export class HomeComponent {
     private router: Router
   ) {
     this.route.params.subscribe((params) => {});
-    this.returnMisReuniones();
+    this.setUpHomePage();
   }
-  returnMisReuniones() {
-    let myID = 1;
-    this.api.getReuniones().subscribe({
+  setUpHomePage(){
+    this.api.getMiID().subscribe({
+      next: (data) => {
+        console.log("ID del usuario logueado: "+data.user_id);
+        this.returnMisReuniones(data.user_id);
+      },
+      error: (error) => {
+        console.log(error);
+        this.router.navigate(['/login']);
+      },
+    });
+  };
+  returnMisReuniones(myID : number) {
+    this.api.getMisReuniones().subscribe({
       next: (data) => {
           console.log(data);
           data.forEach((reunion) => {
@@ -34,6 +45,7 @@ export class HomeComponent {
         },
       error: (error) => {
         console.log(error);
+        this.router.navigate(['/login']);
       },
     });
   }

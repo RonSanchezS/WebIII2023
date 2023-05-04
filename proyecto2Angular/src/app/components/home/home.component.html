@@ -1,14 +1,10 @@
-<table class="table">
-   <thead>
-    <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>Contrase;a</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr *ngFor="let user of setReuniones">
-        <td>{{user.nombre}}</td>
-    </tr>
-   </tbody>
-</table>
+    <mat-card *ngFor="let reunion of setReuniones">
+        <mat-card-header>
+            <mat-card-title>{{reunion.nombre}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-actions>
+            <button mat-raised-button color="accent">text</button>
+            <button mat-raised-button color="primary">text</button>
+            <button mat-raised-button color="warn">text</button>
+        </mat-card-actions>
+    </mat-card>

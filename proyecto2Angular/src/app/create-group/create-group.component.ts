@@ -67,22 +67,28 @@ export class CreateGroupComponent {
     let fecha = this.fecha.value;
     let hora = this.hora.value;
     let numerosArray = [...this.numeros]
-    console.log(numerosArray);
-    console.log(nombre);
-    console.log(fecha);
-    console.log(hora);
-    if (nombre && fecha && hora && this.numeros) {
-      this.api.createReunion(nombre, fecha, hora, 1, numerosArray as number[]).subscribe({
-        next: (data) => {
-          console.log(data);
-          this.router.navigate(['/home']);
-        },
-        error: (error) => {
-          console.log(error);
+    this.api.getMiID().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.api.createReunion(nombre!, fecha!, hora!, data.user_id, numerosArray as number[]).subscribe({
+          next: (data) => {
+            console.log(data);
+            this.router.navigate(['/home']);
+          },
+          error: (error) => {
+            console.log(error);
+  
+          }
+        });
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+    
+    
 
-        }
-      });
-    }
+   
     
 
   }
