@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>listsaposts</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content>
+  <ion-spinner *ngIf="loading"></ion-spinner>
+  <ion-item (click)=navegarPost(post.id) *ngFor="let post of posts">
+    <ion-label >{{post.title}}</ion-label>
+  </ion-item>  
+</ion-content>

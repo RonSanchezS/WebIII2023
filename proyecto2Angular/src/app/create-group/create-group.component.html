@@ -1,0 +1,36 @@
+<p>create-group works!</p>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Formulario de creacion de cuentas
+        </mat-card-title>
+        <mat-card-subtitle>
+            Aqui creas una cuenta, usada para acceder a las caracteristicas de la App
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-form-field appearance="fill">
+        <mat-label>Nombre de reunion</mat-label>
+        <input matInput [formControl]="nombre" placeholder="Reunion sobre diseño FrontEnd" name="inputNombre" required>
+        <mat-error *ngIf="nombre.invalid">{{getErrorMessage('nombre')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Fecha de reunion</mat-label>
+        <input matInput type="date" [formControl]="fecha" name="inputFecha" required>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-error *ngIf="fecha.invalid">{{getErrorMessage('fecha')}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="time" name="" id="" [formControl]="hora">
+        <mat-hint>HH:MM</mat-hint>
+        <mat-error *ngIf="hora.invalid">{{getErrorMessage('hora')}}</mat-error>
+    </mat-form-field>
+    <p>integrantes:</p>
+
+    <mat-checkbox *ngFor="let item of usuarios" [value]="''+item.id"
+        (change)="select(item.id)">{{item.username}}</mat-checkbox>
+
+    <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="createGroup()">Crear reunion</button>
+    </mat-card-actions>
+</mat-card>
