@@ -72,4 +72,18 @@ export class ReunionesService {
     let httpOptions = this.getHttpOptions();
     return this.http.get<MyViewResponse>('http://127.0.0.1:8000/my-view/', httpOptions);
   }
+  updateReunion(id: number, nombre: string, fecha: string, hora: string, dueño : number, integrantes : number[]) {
+    let httpOptions = this.getHttpOptions();
+    return this.http.put(
+      'http://127.0.0.1:8000/reuniones/' + id + '/', 
+      {
+        nombre,
+        fecha,
+        hora,
+        dueño,
+        integrantes,
+      }, httpOptions
+    );
+  }
+
 }

@@ -44,8 +44,8 @@ export class EditGroupComponent {
   }
   checkSiUsuarioBelongsToReunion(id : number){
     if(this.reunionObjetivo!.integrantes.includes(id) ){
-      console.log("Usuario " + id + " pertenece a la reunion " + this.id)
       this.select(id)
+      this.numeros.add(id);
       return true;
     }
    return false;
@@ -65,7 +65,10 @@ export class EditGroupComponent {
       next: (data) => {
         this.reunionObjetivo = data;
         this.guardarValoresDeReunion(data);
-        console.log(this.reunionObjetivo.integrantes);
+        let myID = localStorage.getItem('myID');
+        if (this.reunionObjetivo!.dueño!=parseInt(myID!)){
+          this.router.navigate(['/reuniones']);
+        }
       },
       error: (error) => {
         console.log(error);
@@ -106,7 +109,14 @@ export class EditGroupComponent {
     this.hora.setValue(data.hora);
   }
   updateGroup(){
-
+    let integrantesElegidos = [...this.numeros]
+    this.api.updateReunion(this.id, this.nombre.value!, this.fecha.value!, this.hora.value!, this.reunionObjetivo!.dueño ,integrantesElegidos as number[]).subscribe({
+      next: (data) => {
+        console.log(data);
+        alert('Se actualizo la reunion');
+        this.router.navigate(['/reuniones']);
+      }
+    })
   }
   numeros = new Set();
 

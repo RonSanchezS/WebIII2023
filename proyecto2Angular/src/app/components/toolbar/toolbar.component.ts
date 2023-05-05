@@ -11,13 +11,34 @@ export class ToolbarComponent {
 
   tokenExists = localStorage.getItem('token') ? true : false;
 
-  constructor(private router : Router, private api : UsuariosService) { }
+  constructor(private router : Router, private api : UsuariosService) {
+    
+    this.getMyID();
+   }
 
-  getMyUsername(){
-    return this.api.getMyUsername();
+  myID  : number = 0;
+  myUsername : string = "";
+  getMyID(){
+    this.api.getMyID().subscribe(
+      data => {
+        localStorage.setItem('myID', data.user_id.toString());
+        this.myID = data.user_id;
+        this.getMyUsername(this.myID);
+      }
+    )
+  }
+  getMyUsername(id : number){
+   this.api.getMyUsername(id).subscribe(
+      data => {
+        this.myUsername = data.username;
+        localStorage.setItem('myUsername', data.username);
+      }
+    )
   }
 
   logout(){
+    localStorage.removeItem('myUsername');
+    localStorage.removeItem('myID');
     localStorage.removeItem('token');
     setTimeout(() => {
       this.router.navigate(['/login']);

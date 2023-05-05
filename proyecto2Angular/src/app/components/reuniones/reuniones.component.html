@@ -7,15 +7,18 @@
             <mat-card-subtitle>Integrantes:</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <mat-list>
-                <mat-list-item *ngFor="let item of item.integrantes">
-                    <p>{{usuariosTotales[item]}}</p>
-                </mat-list-item>
+            <mat-list class="listaOrdenada">
+                <p *ngFor="let item of item.integrantes"> 
+                    {{usuariosTotales[item]}}
+                </p>
             </mat-list>
         </mat-card-content>
-        <mat-card-actions class="listaAcciones">
-            <button mat-raised-button color="accent" [routerLink]="'/editarReunion/' + item.id">Editar reunion</button>
-            <button mat-raised-button color="warn" (click)="eliminarReunion(item.id)">Eliminar reunion</button>
+        <mat-card-actions class="listaAcciones" *ngIf= "myUsername ==  usuariosTotales[item['dueño']] ">
+            <button mat-raised-button color="primary" [routerLink]="'/editarReunion/' + item.id">Editar reunion</button>
+            <button mat-raised-button color="accent" (click)="eliminarReunion(item.id)">Eliminar reunion</button>
+        </mat-card-actions>
+        <mat-card-actions  *ngIf= "myUsername !=  usuariosTotales[item['dueño']] ">
+            <button mat-raised-button color="warn">Solo puedes ver reuniones de las que no eres dueño</button>
         </mat-card-actions>
     </mat-card>
 </mat-list>

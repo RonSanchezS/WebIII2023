@@ -21,6 +21,8 @@ export class HomeComponent {
     this.route.params.subscribe((params) => {});
     this.setUpHomePage();
   }
+  dateToHighlight = new Date(2020,3,3);
+
   setUpHomePage(){
     this.api.getMiID().subscribe({
       next: (data) => {

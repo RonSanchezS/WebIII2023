@@ -20,6 +20,8 @@ export class ReunionesComponent {
     this.getReuniones();
     this.getUsuarios();
   }
+  myID = localStorage.getItem('myID');
+  myUsername = localStorage.getItem('myUsername');
   getUsuarios() {
     this.apiUsuarios.getUsuarios().subscribe({
       next: (data) => {

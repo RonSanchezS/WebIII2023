@@ -17,8 +17,8 @@
 
   <button matTooltip="Logout" *ngIf="tokenExists" mat-icon-button (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>
-  </button>
-
+  </button>   
+  <span>{{myUsername}}</span>
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="side">
