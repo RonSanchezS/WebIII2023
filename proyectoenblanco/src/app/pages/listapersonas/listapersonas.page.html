@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>listapersonas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+    <ion-item>
+      <ion-label *ngFor="let persona of personas" (click)="editPersona(persona)">
+        <ion-label>{{persona.nombres}} {{persona.apellidos}}</ion-label>
+      </ion-label>
+
+    </ion-item>
+
+</ion-content>

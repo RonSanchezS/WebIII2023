@@ -17,7 +17,7 @@ export class SinglepostPage implements OnInit {
     body : ""
   }
 
-  constructor(private http : HttpClient, private route : ActivatedRoute, private api : PostsService) {
+  constructor(private route : ActivatedRoute, private api : PostsService) {
     this.route.params.subscribe((params) => {
       console.log(params['id']);
       this.getPost(params['id']);
