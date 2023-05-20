@@ -1,6 +1,7 @@
-   <h2>Soy participante en:</h2>
-   
-   <mat-list>
+<mat-spinner *ngIf="!ready" class="centered" color="accent"></mat-spinner>
+
+<h2 class="text-centered" *ngIf="ready">Soy participante en:</h2>
+   <mat-list *ngIf="ready">
     <mat-card *ngFor="let reunion of setReuniones">
         <mat-card-header>
             <mat-card-title>{{reunion.nombre}}</mat-card-title>

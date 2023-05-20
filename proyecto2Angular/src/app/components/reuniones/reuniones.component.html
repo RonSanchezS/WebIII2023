@@ -18,7 +18,7 @@
             <button mat-raised-button color="accent" (click)="eliminarReunion(item.id)">Eliminar reunion</button>
         </mat-card-actions>
         <mat-card-actions  *ngIf= "myUsername !=  usuariosTotales[item['dueño']] ">
-            <button mat-raised-button color="warn">Solo puedes ver reuniones de las que no eres dueño</button>
+            <button mat-raised-button color="warn">No puedes editar o eliminar reuniones que no te pertenecen</button>
         </mat-card-actions>
     </mat-card>
 </mat-list>

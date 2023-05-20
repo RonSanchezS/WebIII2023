@@ -2,7 +2,7 @@
   <button mat-icon-button (click)="sidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Angular Material + Django</span>
+  <span class="text-centered">Angular Material + Django</span>
 
   <span></span>
   <button matTooltip="Login" *ngIf="!tokenExists" mat-icon-button routerLink="/login">
@@ -59,6 +59,7 @@
   <mat-sidenav-content>
     <div style="height: 88vh;">
       <router-outlet></router-outlet>
+      <app-footer></app-footer>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
