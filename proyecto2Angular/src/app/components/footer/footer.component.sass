@@ -1,0 +1,25 @@
+span
+    padding: 100px 35px
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    color: #c6c6c6
+    font-size: 1.5rem
+    font-weight: 300
+    margin-left: 1rem
+    margin-right: 1rem
+    text-decoration: none
+    animation: background-pan 5s linear infinite
+    background: linear-gradient(to right, #c6c6c6, #e7e7e7, #e7e7e7, #c6c6c6)
+    background-size: 200%
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    white-space: nowrap
+
+@keyframes background-pan 
+    from
+        background-position: 0% center
+    
+    to
+        background-position: -200% center

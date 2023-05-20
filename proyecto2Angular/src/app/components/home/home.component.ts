@@ -13,6 +13,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class HomeComponent {
   usuarios : Reunion[] = [];
   setReuniones : Set<Reunion> = new Set();
+  ready = false;
   constructor(
     private route: ActivatedRoute,
     private api: ReunionesService,
@@ -39,6 +40,7 @@ export class HomeComponent {
     this.api.getMisReuniones().subscribe({
       next: (data) => {
           console.log(data);
+          this.ready = true;
           data.forEach((reunion) => {
             if(reunion.integrantes.includes(myID)){
               this.setReuniones.add(reunion);

@@ -18,6 +18,7 @@ import {  MatTooltipModule} from '@angular/material/tooltip';
 import {  MatDatepickerModule } from '@angular/material/datepicker';
 import {  MatRadioModule } from '@angular/material/radio';
 import {  MatCheckboxModule } from '@angular/material/checkbox';
+import {  MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { MatButtonModule} from '@angular/material/button';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -30,6 +31,7 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { CreateGroupComponent } from './create-group/create-group.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { EditGroupComponent } from './edit-group/edit-group.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { EditGroupComponent } from './edit-group/edit-group.component';
     ReunionesComponent,
     CreateAccountComponent,
     CreateGroupComponent,
-    EditGroupComponent
+    EditGroupComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import { EditGroupComponent } from './edit-group/edit-group.component';
     MatNativeDateModule,
     MatDatepickerModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [UsuariosService],
