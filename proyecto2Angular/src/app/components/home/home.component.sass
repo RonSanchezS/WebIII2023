@@ -2,6 +2,32 @@ mat-form-field
     opacity: 0
     height: 0px
 
+
+    
+.centered
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+    
+.text-centered
+    text-align: center
+    animation: background-pan 3s linear infinite
+    background: linear-gradient(to right, purple, violet, pink, purple)
+    background-size: 200%
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    white-space: nowrap
+@keyframes background-pan 
+    from
+        background-position: 0% center
+    
+    to
+        background-position: -200% center
+    
+    
+
 mat-list
     display: flex
     flex-wrap: wrap
